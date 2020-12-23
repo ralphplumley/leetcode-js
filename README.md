@@ -3,7 +3,6 @@
 A collection of 100+ popular [LeetCode](https://leetcode.com/) problems that I've solved.
 
 Each directory includes a:
-* Description with link to LeetCode problem
 * Solution to the problem
 * Unit tests
 
