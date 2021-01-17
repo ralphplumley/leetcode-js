@@ -1,4 +1,4 @@
-const addBinary = require('./solution')
+const addBinary = require('./solution2')
 
 test('#1', ()=> {
     let str1 = '11010'
