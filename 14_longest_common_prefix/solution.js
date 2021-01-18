@@ -33,5 +33,3 @@ let longestCommonPrefix = function(strs) {
     }
     return ans
 };
-
-console.log(longestCommonPrefix(["cir","car"]))

@@ -32,4 +32,3 @@ let productExceptSelf = function(nums) {
 };
 
 let arr = [4,5,1,8,2]
-console.log(productExceptSelf(arr))

@@ -10,9 +10,9 @@ let addBinary = function(a, b) {
     let result = []
 
     for (let i = 0; i < len; i++) {
-        num1 = Number(a[i] || 0)
-        num2 = Number(b[i] || 0)
-        curr = Number(result[i] || 0) + num1 + num2
+        let num1 = Number(a[i] || 0)
+        let num2 = Number(b[i] || 0)
+        let curr = Number(result[i] || 0) + num1 + num2
 
         if (curr >= 2) {
             result[i] = curr % 2

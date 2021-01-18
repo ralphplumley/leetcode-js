@@ -12,4 +12,3 @@ let merge = function(intervals) {
     return result
 }
 let intervals = [[1,3],[2,6],[8,10],[15,18]]
-console.log(merge(intervals))
