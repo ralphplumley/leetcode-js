@@ -22,19 +22,25 @@ let isAlienSorted = function(words, order) {
 };
 
 function lex_order(w1, w2, dict) {
-    for(let k = 0; k < w1.length; k++) {
+    let k = 0
+    while (k < w1.length) {
         let c1 = w1[k]
         let c2 = w2[k]
+        if (c2 === undefined) return false
         if (dict[c1] > dict[c2]) return false
         if (dict[c1] < dict[c2]) return true
+        k++
     }
     return w1.length <= w2.length
 }
 
-// module.exports = isAlienSorted
-// module.exports = lex_order
+// console.log(isAlienSorted(["hello","leetcode"], "hlabcdefgijkmnopqrstuvwxyz"))
+// console.log(isAlienSorted(["word","world","row"], "worldabcefghijkmnpqstuvxyz"))
+// console.log(isAlienSorted(["apple", "app"], "abcdefghijklmnopqrstuvwxyz"))
 
-module.exports = {
-    isAlienSorted: function() {},
-    lex_order: function() {},
-};
+// module.exports = {
+//     isAlienSorted: function() {},
+//     lex_order: function() {},
+// };
+
+module.exports = isAlienSorted

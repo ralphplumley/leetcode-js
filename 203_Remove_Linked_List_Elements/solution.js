@@ -23,3 +23,4 @@ var removeElements = function(head, val) {
 
     return sentinel.next
 };
+
