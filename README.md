@@ -1,4 +1,4 @@
-# Leetcode in Javascript
+# Leetcode in JavaScript & TypeScript
 
 A collection of popular [LeetCode](https://leetcode.com/) problems that I've solved.
 
