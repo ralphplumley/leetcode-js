@@ -31,16 +31,10 @@ WordDictionary.prototype.search = function(word) {
 WordDictionary.prototype.dfs = function(word, index, node) {
     if (index == word.length) return node.isEnd == true;
 
-    if (word[index] == '.') {
-        for (let key in node) {
-            if (this.dfs(word, index + 1, node[key])) return true;
-        }
-
-    } else {
-        if (node[word[index]]!=null) {
-            return this.dfs(word, index + 1, node[word[index]]);
-        }
+    if (node[word[index]]!=null) {
+        return this.dfs(word, index + 1, node[word[index]]);
     }
+
     return false;
 }
 
@@ -54,7 +48,5 @@ WordDictionary.prototype.dfs = function(word, index, node) {
 
 let wordDictionary = new WordDictionary();
 wordDictionary.addWord("bad");
-// console.log(wordDictionary.search("pad"))
-// console.log(wordDictionary.search("bad"))
-console.log(wordDictionary.search(".ad"))
-// console.log(wordDictionary.search("b.."))
+console.log(wordDictionary.search("pad"))
+console.log(wordDictionary.search("bad"))

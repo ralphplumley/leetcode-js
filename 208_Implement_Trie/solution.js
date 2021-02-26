@@ -57,3 +57,12 @@ Trie.prototype.searchNode = function(word) {
  * var param_2 = obj.search(word)
  * var param_3 = obj.startsWith(prefix)
  */
+
+let trie = new Trie();
+console.log(trie.insert("apple"))
+
+console.log(trie.search("apple"))     // returns true
+console.log(trie.search("app"))       // returns false
+console.log(trie.startsWith("app"))         // returns true
+console.log(trie.insert("app"))
+console.log(trie.search("app"))        // returns true
