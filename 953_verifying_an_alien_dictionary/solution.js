@@ -44,3 +44,4 @@ function lex_order(w1, w2, dict) {
 // };
 
 module.exports = isAlienSorted
+// module.exports = lex_order

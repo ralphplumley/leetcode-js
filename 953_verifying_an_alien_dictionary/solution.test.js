@@ -1,5 +1,6 @@
 // const { isAlienSorted, lex_order} = require('./solution')
 const isAlienSorted = require('./solution')
+// const isAlienSorted = require('./attempt2')
 
 test('setup', ()=>{
     expect(1+1).toEqual(2)
@@ -47,4 +48,9 @@ test('#7', ()=>{
     expect(isAlienSorted(words, order)).toBeTruthy()
 })
 
+test('#8', ()=>{
+    let words = ["kuvp","q"]
+    let order = "ngxlkthsjuoqcpavbfdermiywz"
+    expect(isAlienSorted(words, order)).toBeTruthy()
+})
 
