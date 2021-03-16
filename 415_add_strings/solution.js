@@ -3,7 +3,7 @@
  * @param {string} num2
  * @return {string}
  */
-var addStrings = function(num1, num2) {
+const addStrings = function(num1, num2) {
     let i = num1.length - 1
     let j = num2.length - 1
     let carry = 0
@@ -25,5 +25,6 @@ var addStrings = function(num1, num2) {
 
     return result.split("").reverse().join("")
 };
+console.log(addStrings("12345", "777"))
 
-module.exports = addStrings
+// module.exports = addStrings
