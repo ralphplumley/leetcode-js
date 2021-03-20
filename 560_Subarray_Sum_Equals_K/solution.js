@@ -44,6 +44,6 @@ const subarraySum = function(nums, k) {
     return count
 };
 
-let nums = [3,4,7,2,-3,1,4,2]
-let k = 7
+let nums = [1]
+let k = 0
 console.log(subarraySum(nums, k))
