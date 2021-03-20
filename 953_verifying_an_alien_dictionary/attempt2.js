@@ -1,8 +1,3 @@
-/**
- * @param {string[]} words
- * @param {string} order
- * @return {boolean}
- */
 const isAlienSorted = function(words, order) {
     // setup dictionary
     let dict = {}
@@ -36,9 +31,13 @@ const lex_order = function (word1, word2, dict) {
 }
 
 
-// console.log(isAlienSorted(["hello","leetcode"], "hlabcdefgijkmnopqrstuvwxyz"))
-console.log(isAlienSorted(["word","world","row"], "worldabcefghijkmnpqstuvxyz"))
-console.log(isAlienSorted(["apple", "app"], "abcdefghijklmnopqrstuvwxyz"))
+// let words = ["fxasxpc","dfbdrifhp","nwzgs","cmwqriv","ebulyfyve","miracx","sxckdwzv","dtijzluhts","wwbmnge","qmjwymmyox"]
+// let order = "zkgwaverfimqxbnctdplsjyohu"
+
+let words = ["dthkre","vvjrym","zvrzapstvm","dcjkqyrr","ditmpogp","gpzzmilb","dymhwov","bytjqyqupf","vjeaumrdy","lwvozpyx"]
+let order = "tngjwhflzomueqkisxcpybdavr"
+
+console.log(isAlienSorted(words, order))
 
 // module.exports = {
 //     isAlienSorted: function() {},
