@@ -27,5 +27,5 @@ const findKthPositive = function(arr, k) {
     return left + k
 };
 
-arr = [2,3,4,7,11], k = 5
+arr = [1,2,3,4], k = 2
 console.log(findKthPositive(arr, k))
