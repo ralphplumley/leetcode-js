@@ -31,14 +31,11 @@ const lex_order = function (word1, word2, map) {
     }
 
     // in case word1 is shorter (equal too) than word2
-    return word1.length <= word2.length
+    // return word1.length <= word2.length
+    return true
 }
 
 
-// let words = ["fxasxpc","dfbdrifhp","nwzgs","cmwqriv","ebulyfyve","miracx","sxckdwzv","dtijzluhts","wwbmnge","qmjwymmyox"]
-// let order = "zkgwaverfimqxbnctdplsjyohu"
-
-let words = ["dthkre","vvjrym","zvrzapstvm","dcjkqyrr","ditmpogp","gpzzmilb","dymhwov","bytjqyqupf","vjeaumrdy","lwvozpyx"]
-let order = "tngjwhflzomueqkisxcpybdavr"
+words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
 
 console.log(isAlienSorted(words, order))

@@ -31,12 +31,13 @@ function lex_order(w1, w2, dict) {
         if (dict[c1] < dict[c2]) return true
         k++
     }
-    return w1.length <= w2.length
+    //return w1.length <= w2.length
+    return true
 }
 
 // console.log(isAlienSorted(["hello","leetcode"], "hlabcdefgijkmnopqrstuvwxyz"))
 // console.log(isAlienSorted(["word","world","row"], "worldabcefghijkmnpqstuvxyz"))
-// console.log(isAlienSorted(["apple", "app"], "abcdefghijklmnopqrstuvwxyz"))
+console.log(isAlienSorted(["apple", "app"], "abcdefghijklmnopqrstuvwxyz"))
 
 // module.exports = {
 //     isAlienSorted: function() {},

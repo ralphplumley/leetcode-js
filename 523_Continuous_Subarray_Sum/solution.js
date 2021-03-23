@@ -38,6 +38,6 @@ const checkSubarraySum = function(nums, k) {
     return false
 };
 
-let arr = [0,0]
-let k = 0
+let arr = [23,2,4,6,7]
+let k = 6
 console.log(checkSubarraySum(arr, k))
