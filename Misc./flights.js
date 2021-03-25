@@ -31,6 +31,6 @@ const getMinCost = function(D, R) {
     return ans
 }
 
-d1 = [10,7,8,6,5]
+d1 = [10,7,8,9,5]
 r1 = [7,8,9,4,9]
 console.log(getMinCost(d1, r1))
