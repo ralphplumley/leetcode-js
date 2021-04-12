@@ -34,3 +34,6 @@ var findMaxConsecutiveOnes = function(nums) {
     return longestSequence
 
 };
+
+let nums = [1,0,1,1,0]
+console.log(findMaxConsecutiveOnes(nums))
