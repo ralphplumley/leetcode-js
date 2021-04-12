@@ -23,3 +23,6 @@ var missingNumber = function(nums) {
 
     return n
 };
+
+let input = [3,0,1]
+console.log(missingNumber(input))
