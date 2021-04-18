@@ -126,7 +126,7 @@ const containsNearbyAlmostDuplicate = function(nums, k, t) {
 
         // get last node that is <= nums[i]
         let prev = bst.prevSmaller(bst.root, nums[i])
-        if (prev && prev.val >= nums[i] -t) return true
+        if (prev && prev.val >= nums[i] - t) return true
         bst.root = bst.add(bst.root, nums[i])
         if (k <= i) {
             bst.root = bst.delete(bst.root, nums[i-k])
