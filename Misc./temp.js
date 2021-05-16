@@ -1,39 +1,23 @@
-const main = function (str) {
-    let result = []
-    let map = buildFreqTables(str)
-    printPermutations(map, "", str.length, result)
-    return result
-}
+const addParen = function (list, leftRem, rightRem, str, index) {
+    if (leftRem < 0 || rightRem < leftRem) return // invalid state
 
-const buildFreqTables = function (str) {
-    let map = new Map()
-    for (let i = 0; i < str.length; i++) {
-        let char = str.charAt(i)
-        if (!map.has(char)) {
-            map.set(char, 1)
-        } else {
-            map.set(char, map.get(char) + 1)
-        }
-    }
-    return map
-}
+    if (leftRem === 0 && rightRem === 0) { // out of left and right parentheses
+        const strCopy = str.slice(0)
+        list.push(strCopy.join(''))
+    } else {
+        str[index] = '(' // add left and recurse
+        addParen(list, leftRem - 1, rightRem, str, index + 1)
 
-const printPermutations = function (map, prefix, remaining, result) {
-    // base case, permutation has been completed
-    if (remaining === 0) {
-        result.push(prefix)
-        return
-    }
-
-    // try remaining letters for next char, and generate remaining permutations
-    for (let [char, count] of map) {
-        if (count > 0) {
-            map.set(char, count - 1)
-            printPermutations(map, prefix + char, remaining - 1, result)
-            map.set(char, count)
-        }
+        str[index] = ')' // add right and recurse
+        addParen(list, leftRem, rightRem - 1, str, index + 1)
     }
 }
 
-let str = "abca"
-console.log(main(str))
+const generateParens = function (count) {
+    let str = new Array(count*2)
+    let list = []
+    addParen(list, count, count, str, 0)
+    return list
+}
+
+console.log(generateParens(3))
