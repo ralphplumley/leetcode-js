@@ -1,4 +1,4 @@
-var permute = function(letters) {
+const permute = function(letters) {
     let res = [];
     dfs(letters, [], Array(letters.length).fill(false), res);
     return res;
@@ -22,3 +22,5 @@ function dfs(letters, path, used, res) {
         used[i] = false;
     }
 }
+
+console.log(permute('abc'))
