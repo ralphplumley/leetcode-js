@@ -39,7 +39,7 @@ const coinChange = function(coins, amount) {
     return dp[amount] > amount ? -1 : dp[amount]
 };
 
-let coins = [474,83,404,3],
-    amount = 264
+let coins = [1,2,5],
+    amount = 11
 
 console.log(coinChange(coins, amount))
