@@ -20,3 +20,5 @@ const countWays = function(n, memo) {
         return memo[n]
     }
 }
+
+console.log(climbStairs(6))
