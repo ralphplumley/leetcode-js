@@ -47,3 +47,5 @@ var canFinish = function(numCourses, prerequisites) {
     if (sorted_order.length !== numCourses) return false
     return true
 };
+
+console.log(canFinish(4, [[1,0], [2,0], [2,1], [3,1]]))
