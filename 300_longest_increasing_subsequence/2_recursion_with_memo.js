@@ -36,4 +36,4 @@ var lengthOfLIS = function(nums) {
     return recurse(nums, -1, 0, memo)
 };
 
-console.log(lengthOfLIS([10,9,2,5,3,7,101,18]))
+console.log(lengthOfLIS([5,2,21,1,38]))
