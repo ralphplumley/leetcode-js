@@ -32,7 +32,9 @@ RandomizedSet.prototype.remove = function(val) {
     const index = this.map.get(val)
 
     // moves the value to the end of the array, so we can just pop() for O(1) removal
-    swap(this.elements, index, this.elements.length)
+    const swapped = swap(this.elements, this.map, index, this.elements.length - 1)
+    this.elements = swapped[0]
+    this.map = swapped[1]
 
     this.elements.pop()
     this.map.delete(val)
@@ -40,10 +42,16 @@ RandomizedSet.prototype.remove = function(val) {
     return true
 };
 
-const swap = (arr, index1, index2) => {
-    const temp = arr[index1]
+const swap = (arr, map, index1, index2) => {
+    const tempVal = arr[index1] // 0
+
     arr[index1] = arr[index2]
-    arr[index2] = temp
+    map.set(arr[index2], index1)
+
+    arr[index2] = tempVal
+    map.set(arr[index2], index2)
+
+    return [arr, map]
 }
 
 /**
@@ -51,7 +59,8 @@ const swap = (arr, index1, index2) => {
  * @return {number}
  */
 RandomizedSet.prototype.getRandom = function() {
-    const index = Math.floor(Math.random() * this.elements.length + 1);
+    const index = Math.floor(Math.random() * this.elements.length);
+
     return this.elements[index]
 };
 
