@@ -31,6 +31,61 @@ const getMinCost = function(D, R) {
     return ans
 }
 
-d1 = [10,7,8,9,5]
-r1 = [7,8,9,4,9]
-console.log(getMinCost(d1, r1))
+const getMinCostBetter = (D, R) => {
+    const stackD = [[D[0], 0]],
+          stackR = [[R[0], 0]],
+          map = new Map()
+
+    let min = D[0] + R[0]
+    map.set(min, [0,0])
+
+    for (let i = 1; i < D.length; ++i) {
+        stackD.push([D[i], i])
+        stackR.push([R[i], i])
+
+        // [value, index]
+        while (stackD.length > 1 && stackD[stackD.length - 1][0] < stackD[stackD.length - 2][0])
+            stackD.shift()
+        while (stackR.length > 1 && stackR[stackR.length - 1][0] < stackR[stackR.length - 2][0])
+            stackR.shift()
+        while (stackR.length > 1 && stackD[0][1] > stackR[0][1])
+            stackR.shift()
+
+        const sum = stackD[0][0] + stackR[0][0]
+        if (sum < min) {
+            min = sum
+            map.set(min, [stackD[0][1], stackR[0][1]])
+        } else {
+            if (!map.has(sum)) map.set(sum, [stackD[0][1], stackR[0][1]])
+        }
+    }
+
+    return map.get(min)
+}
+
+D = [8, 10, 5, 6, 1]
+R = [3, 9, 8, 1, 18]
+console.log(getMinCostBetter(D, R))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
