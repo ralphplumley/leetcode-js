@@ -12,6 +12,59 @@
  * @param {Node} root
  * @return {Node}
  */
+
+/*
+    Time: O(N)
+    Space: O(1)
+*/
+
+var connect = function(root) {
+    if (!root) return null
+    let leftMost = root
+
+    while (leftMost !== null) {
+        let head = leftMost,
+            prev = null
+
+        while (head !== null) {
+            if (head.left !== null && head.right !== null) {
+                if (prev !== null) {
+                    prev.next = head.left
+                } else {
+                    leftMost = head.left
+                }
+
+                head.left.next = head.right
+                prev = head.right
+            } else if (head.left !== null && head.right === null) {
+                if (prev !== null) {
+                    prev.next = head.left
+                } else {
+                    leftMost = head.left
+                }
+                prev = head.left
+            } else if (head.left === null && head.right !== null) {
+                if (prev !== null) {
+                    prev.next = head.right
+                } else {
+                    leftMost = head.right
+                }
+                prev = head.right
+            } else {
+                if (prev === null) leftMost = null
+            }
+            head = head.next
+        }
+    }
+
+    return root
+};
+
+/*
+this solution is:
+Time: O(N)
+Space: O(N) - because of the queue
+
 var connect = function(root) {
     if (!root) return null
     const queue = [root]
@@ -29,4 +82,6 @@ var connect = function(root) {
     }
 
     return root
-};
+}
+
+*/
