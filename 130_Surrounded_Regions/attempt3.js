@@ -3,38 +3,38 @@
  * @return {void} Do not return anything, modify board in-place instead.
  */
 var solve = function(board) {
+
     if (board === null || board.length === 0) return
 
-    const disjointSets = new DisjointSets(board),
-        rows = board.length,
-        cols = board[0].length,
-        dummyBorder = rows * cols
+    const UF = new UnionFind(board),
+        ROWS = board.length,
+        COLS = board[0].length,
+        DUMMY_BORDER = ROWS * COLS,
+        DIRECTIONS = [
+            [0,1],
+            [0,-1],
+            [1,0],
+            [-1,0],
+        ]
 
-    const directions = [
-        [0,1],
-        [0,-1],
-        [1,0],
-        [-1,0],
-    ]
-
-    for (let row = 0; row < rows; ++row) {
-        for (let col = 0; col < cols; ++col) {
+    for (let row = 0; row < ROWS; ++row) {
+        for (let col = 0; col < COLS; ++col) {
             if (board[row][col] === 'O') {
+                const idx = row * COLS + col
 
-                const borderO = row * cols + col
-
-                if (row === 0 || row === rows - 1 || col === 0 || col === cols - 1) {
-                    disjointSets.union(dummyBorder, borderO)
+                // if we're at a border, add slot to UF
+                if (row === 0 || row === ROWS - 1 || col === 0 || col === COLS - 1) {
+                    UF.union(DUMMY_BORDER, idx)
                     continue
                 }
 
-                for (let dir of directions) {
-                    const nRow = row + dir[0],
-                        nCol = col + dir[1]
+                for (let dir of DIRECTIONS) {
+                    const newRow = row + dir[0],
+                        newCol = col + dir[1]
 
-                    if (nRow >= 0 && nCol >= 0 && nRow < rows && nCol < cols && board[nRow][nCol] === 'O') {
-                        const neighbor = nRow * cols + nCol
-                        disjointSets.union(borderO, neighbor)
+                    if (newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS && board[newRow][newCol] === 'O') {
+                        const neighborIdx = newRow * COLS + newCol
+                        UF.union(idx, neighborIdx)
                     }
                 }
             }
@@ -42,34 +42,35 @@ var solve = function(board) {
     }
 
     // change 'X' to 'O'
-    for (let row = 0; row < rows; ++row) {
-        for (let col = 0; col < cols; ++col) {
-            if (board[row][col] === 'O' && disjointSets.find(row * cols + col) !== disjointSets.find(dummyBorder)) {
+    for (let row = 0; row < ROWS; ++row) {
+        for (let col = 0; col < COLS; ++col) {
+            const idx = row * COLS + col
+            if (board[row][col] === 'O' && UF.find(idx) !== UF.find(DUMMY_BORDER)) {
                 board[row][col] = 'X'
             }
         }
     }
+
+    console.log(board)
 };
 
-class DisjointSets {
-
+class UnionFind {
     constructor(board) {
         this.parent = new Array(board.length * board[0].length)
 
-        const rows = board.length
-        const cols = board[0].length
+        const ROWS = board.length,
+            COLS = board[0].length
 
-        for (let row = 0; row < rows; ++row) {
-            for (let col = 0; col < cols; ++col) {
+        for (let row = 0; row < ROWS; ++row) {
+            for (let col = 0; col < COLS; ++col) {
+                const id = row * COLS + col
                 if (board[row][col] === 'O') {
-                    const id = row * cols + col
                     this.parent[id] = id
                 }
             }
         }
 
-
-        this.parent[rows * cols] = rows * cols
+        this.parent[ROWS * COLS] = ROWS * COLS
     }
 
     find(x) {
@@ -77,14 +78,28 @@ class DisjointSets {
         return this.parent[x] = this.find(this.parent[x])
     }
 
-    union(x, y) {
-        const rootX = this.find(x),
-            rootY = this.find(y)
+    union(a,b) {
+        const rootA = this.find(a),
+            rootB = this.find(b)
 
-        if (rootX !== rootY) this.parent[rootX] = rootY
+        if (rootA !== rootB) this.parent[rootA] = rootB
     }
 
 }
 
+const board = [
+    ["O","X","X","O","X"],
+    ["X","O","O","X","O"],
+    ["X","O","X","O","X"],
+    ["O","X","O","O","O"],
+    ["X","X","O","X","O"]
+]
+/*
+    ["O","X","X","O","X"],
+    ["X","X","X","X","O"],
+    ["X","X","X","O","X"],
+    ["O","X","O","O","O"],
+    ["X","X","O","X","O"]
+ */
 
-
+console.log(solve(board))
