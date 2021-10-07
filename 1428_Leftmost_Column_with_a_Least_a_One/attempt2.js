@@ -51,3 +51,10 @@ const leftMostColumnWithOne = function(binaryMatrix) {
 
     return ans
 };
+
+/*
+    let N be number of rows, M be number of cols
+    T.C. - since we DON'T visit each cell, and instead only traverse some of the cells,
+           time complexity is O(M + N). Because at most, we would travel M + N cells.
+    S.C. - we don't use any extra space, so O(1), constant space
+ */
