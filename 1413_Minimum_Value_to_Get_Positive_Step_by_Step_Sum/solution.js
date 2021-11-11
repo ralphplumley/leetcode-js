@@ -72,7 +72,7 @@ var minStartValue = function(nums) {
     */
 
     // Prefix Sum-----------------------------------------------------------
-    // TC: O(n * log(mn))
+    // TC: O(n)
     // SC: O(1)
 
     let minVal = 0,
