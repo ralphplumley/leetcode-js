@@ -6,11 +6,11 @@
  * @return {boolean}
  */
 var validPath = function(n, edges, start, end) {
-    // create a hashmap to be used as our adjanceny list
+    // create a hashmap to be used as our adjacency list
     const map = new Map(),
         visited = new Set()
 
-    // build the adjancency list (undirected)
+    // build the adjacency list (undirected)
     for (const [v, e] of edges) {
         if (map.has(v)) {
             map.get(v).push(e)
@@ -30,11 +30,11 @@ var validPath = function(n, edges, start, end) {
         // add to visited set
         visited.add(v)
 
-        // get adjacent verticies
+        // get adjacent vertices
         const edges = map.get(v)
 
         // for all adjacent vertices, run DFS
-        if (edges && edges.length > 0) {
+        if (edges) {
             for (const e of edges) {
                 if (!visited.has(e)) dfs(e)
             }
